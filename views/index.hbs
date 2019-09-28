@@ -1,19 +1,11 @@
-<header class="site-head">
-    <h1 class="h2 mb-4 title">Youtube Downloader</h1>
-    <p>Download any youtube video in multiple formats and quality with fast download</p>
-</header>
-
-<div class="container content-wrap">
-
-    <div class="row justify-content-center align-items-start">
-
-        <div class="col">
-
-            <form class="down-form" name="youtube-download" method="post" action='/video'>
-                <input type="url" name="url" placeholder="https://www.youtube.com/watch?v=kQW81ty6QFg" required class="form-control form-control-lg"/>
-                <button type="submit" class="btn btn-success mt-3">Get Links</button>
-            </form>
-
-        </div>
+          <div class="w-3/4 flex flex-col justify-center items-center">
+    <div class="w-1/2 text-3xl text-center">
+        Kolay, Ucretsiz ve Hizli Youtube MP3-MP4 Donusturucu
     </div>
+    <form class="w-full flex flex-row border border-gray-500 rounded h-16" name="youtube-download" method="post" action='/video'>
+        <div class="h-full w-full p-3">
+            <input name="url" placeholder="https://www.youtube.com/watch?v=kQW81ty6QFg" required class="text-gray-500 h-full w-full focus:outline-none bg-transparent" />
+        </div>
+            <button type="submit" class="text-white anim h-full w-auto px-3 bg-red-500 hover:bg-red-400 focus:outline-none rounded">Donustur</button>
+    </form>
 </div>
