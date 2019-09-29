@@ -7,14 +7,12 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Bungee+Shade" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="javascript/index.js"></script>
+    <script src="/javascript/index.js"></script>
 
   </head>
   <body>
-<div class="absolute w-full h-full bg-gray-100 flex flex-col justify-center items-center">
-
-          {{{body}}}
-          </div>
-
+    <div class="absolute w-full h-full bg-gray-100 flex flex-col  items-center {{#if nocenter}}{{else}}justify-center{{/if}}">
+        {{{body}}}
+    </div>
   </body>
 </html>

@@ -1,10 +1,10 @@
 window.onclick = function(event) {
-  if (!event.target.matches('#videoSelector')) {
-    $('#videoSelector').show();
+  if (!event.target.matches('.videoSelector')) {
+    $('.videoSelector').show();
     $('.list').hide();
   }
   else{
-      $('#videoSelector').hide();
-    $('.list').show();
+    $("#"+event.target.id).hide();
+    $("."+event.target.id+'.list').show();
   }
 }

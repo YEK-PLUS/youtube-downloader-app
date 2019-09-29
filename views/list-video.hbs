@@ -1,0 +1,41 @@
+{{> index}}
+{{#if error}}
+<p>{{error}}</p>
+{{else}}
+{{#each formats}}
+<div class="w-3/4 h-auto flex flex-row border border-gray-500 rounded my-4">
+	<div class="w-2/5 videoWrapper">
+		<iframe width="100%" height="auto" src="https://www.youtube.com/embed/{{info.id}}" frameborder="0" allowfullscreen></iframe>
+	</div>
+	<div class="w-full h-full">
+		<div class="w-1/2 h-full mx-auto px-4 py-2 flex flex-col items-center">
+			{{#each audio}}
+			{{#if isAudio}}
+			<button class="mt-4 w-full rounded border-green-700 hover:border-green-600 border text-left">
+			<a class="w-full px-3 py-2 block" href="{{url}}">
+			MP3
+			</a>
+			</button>
+			{{/if}}
+			{{/each}}
+            <div class="w-full flex flex-col selectcont mt-4">
+				<div id="{{info.id}}" class="videoSelector relative inline-block flex flex-row rounded px-3 py-2 border border-green-700 hover:border-green-600">
+					MP4 - {{video.[0].format_note}}
+				</div>
+				<div class="{{info.id}} list hidden absolute w-1/4 flex flex-col items-center justify-center overflow-y-scroll bg-white">
+					{{#each video}}
+					{{#if isVideo}}
+					<button class="my-1 w-full rounded border-green-700 hover:border-green-600 border text-left">
+					<a class="w-full px-3 py-2 block" target="_blank" href="{{url}}">
+					MP4 - {{format_note}}
+					</a>
+					</button>
+					{{/if}}
+					{{/each}}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{{/each}}
+{{/if}}
