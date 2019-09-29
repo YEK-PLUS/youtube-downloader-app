@@ -11,8 +11,13 @@
 
   </head>
   <body>
-    <div class="absolute w-full h-full bg-gray-100 flex flex-col  items-center {{#if nocenter}}{{else}}justify-center{{/if}}">
+    <div class="absolute w-full h-full bg-gray-100 flex flex-col z-0 items-center {{#if nocenter}}{{else}}justify-center{{/if}}">
         {{{body}}}
+    </div>
+    <div class="fixed hidden fadeCont w-full h-full z-10 bg-white flex flex-col items-center justify-center">
+        <div style="height:20rem;width:20rem" class="fade text-4xl text-white font-black bg-red-500 rounded-full flex flex-row items-center justify-center">
+            Donusturuluyor
+        </div>
     </div>
   </body>
 </html>

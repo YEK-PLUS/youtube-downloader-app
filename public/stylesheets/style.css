@@ -10,3 +10,16 @@
 	width: 100%;
 	height: 100%;
 }
+.fade{
+    transition: 1s all ease;
+    animation: op .5s infinite alternate;
+}
+
+@keyframes op {
+    from {
+        opacity:0;
+    }
+    to{
+        opacity: 1
+    }
+}

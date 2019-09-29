@@ -3,7 +3,8 @@ var router = express.Router();
 var ytdl = require('youtube-dl');
 var request = require('request');
 var search = require('youtube-search');
-
+var https = require("https");
+const fs = require("fs");
 /* GET home page. */
 router.get('/', function(req, res, next) {
     res.render('index', { nocenter:false, title: 'Youtube Downloader' });
@@ -116,5 +117,38 @@ router.all('/search', function(req, res, next) {
 
 
 });
+router.all('/download', function(req, res, next) {
 
+    let url =Buffer.from(req.query.url, 'base64').toString('ascii');
+    let filename = 'convert/'+req.query.filename;
+    const { exec } = require('child_process');
+    const command = 'curl "'+url+'" >> '+filename;
+    const command2 = 'curl -sI "'+url+'" | grep -i Content-Length > '+filename+'.txt';
+    console.log(command2)
+    exec(command2)
+    exec(command)
+    res.send('success')
+})
+router.all('/get', function(req, res, next) {
+    let filename = 'convert/'+req.query.filename;
+    fs.readFile(filename+'.txt', (err, data) => {
+        let l = parseInt(data.toString('ascii').split(':')[1]);
+        const stats = fs.statSync(filename);
+        const fileSizeInBytes = stats.size;
+        console.log(fileSizeInBytes,l)
+        if(fileSizeInBytes === l){
+            if(req.query.get === 'true'){
+                res.download(filename)
+            }
+            else{
+                res.send("success").end()
+            }
+        }
+        else{
+                res.send("wait").end()
+            }
+    });
+
+
+})
 module.exports = router;
