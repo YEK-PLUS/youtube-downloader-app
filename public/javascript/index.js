@@ -14,7 +14,7 @@ window.onclick = function(event) {
     if (event.target.matches('.getvideo')) {
         let url = $(event.target).attr('url');
         let filename =makeid(8)+$(event.target).attr('filename');
-        let base = "https://3000-ae503493-0fcf-4372-8d0d-7da621803548.ws-eu0.gitpod.io";
+        let base = "https://youtube-conventer.herokuapp.com";
         let buildreq = base+'/download';
         buildreq += '?url='+btoa(url);
         buildreq += '&filename='+filename;
