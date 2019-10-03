@@ -14,7 +14,16 @@
     transition: 1s all ease;
     animation: op .5s infinite alternate;
 }
-
+.progress-bar{
+  transition:1s all ease;
+}
+.percent:after{
+    content:'%'
+}
+.percent{
+    line-height: 2rem;
+    top: -2rem;
+}
 @keyframes op {
     from {
         opacity:0;

@@ -120,7 +120,7 @@ router.all('/search', function(req, res, next) {
 router.all('/download', function(req, res, next) {
 
     let url =Buffer.from(req.query.url, 'base64').toString('ascii');
-    let filename = 'convert/'+req.query.filename.replace(/[^a-z0-9]/gi, '_').toLowerCase();
+    let filename = 'convert/'+req.query.filename.replace(/[^a-z0-9]/gi, '.').toLowerCase();
     const { exec } = require('child_process');
     const command = 'curl "'+url+'" >> '+filename;
     const command2 = 'curl -sI "'+url+'" | grep -i Content-Length > '+filename+'.txt';
@@ -130,7 +130,7 @@ router.all('/download', function(req, res, next) {
     res.send('success')
 })
 router.all('/get', function(req, res, next) {
-    let filename = 'convert/'+req.query.filename.replace(/[^a-z0-9]/gi, '_').toLowerCase();
+    let filename = 'convert/'+req.query.filename.replace(/[^a-z0-9]/gi, '.').toLowerCase();
     fs.readFile(filename+'.txt', (err, data) => {
         let l = parseInt(data.toString('ascii').split(':')[1]);
         const stats = fs.statSync(filename);
@@ -145,7 +145,7 @@ router.all('/get', function(req, res, next) {
             }
         }
         else{
-                res.send("wait").end()
+                res.send({now:fileSizeInBytes,file:l}).end()
             }
     });
 

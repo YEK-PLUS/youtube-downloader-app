@@ -25,17 +25,22 @@ window.onclick = function(event) {
             function controlFile(){
                 if(success == false){
                     $.get(control,(data)=>{
-                        if(data === "wait"){
-                            $('.fadeCont').removeClass('hidden')
-                            success = false;
-                            setTimeout(() => {
-                                controlFile()
-                            }, 1000);
-                        }
+
                         if(data ==="success"){
                             $('.fadeCont').addClass('hidden')
                             success = true;
                             window.location=control+'&get=true'
+                        }
+                        else{
+                            $('.fadeCont').removeClass('hidden')
+                            var percent = (100*data.now)/data.file;
+                            $('.progress-bar').css('width',~~percent+'%')
+                            $(".percent").html(~~percent)
+                            console.log(percent)
+                            success = false;
+                            setTimeout(() => {
+                                controlFile()
+                            }, 1000);
                         }
                     })
                 }
