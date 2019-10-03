@@ -11,7 +11,7 @@
         <div class="w-1/2 h-full mx-auto px-4 py-2 flex flex-col items-center">
             {{#each meta.formats.audio}}
                 {{#if isAudio}}
-                    <button filename="-{{format_note}}.m4a" url="{{url}}" class="getvideo w-full px-3 py-2 block my-1 w-full rounded border-green-700 hover:border-green-600 border text-left">
+                    <button filename="{{../meta.name}}-{{format_note}}.mp3" url="{{url}}" class="getvideo w-full px-3 py-2 block my-1 w-full rounded border-green-700 hover:border-green-600 border text-left">
                         MP3
                     </button>
                 {{/if}}
@@ -24,7 +24,7 @@
                 <div class="{{meta.id}} list hidden absolute w-1/4 flex flex-col items-center justify-center overflow-y-scroll bg-white">
                     {{#each meta.formats.video}}
                         {{#if isVideo}}
-                            <button filename="-{{format_note}}.mp4" url="{{url}}" class="getvideo w-full px-3 py-2 block my-1 w-full rounded border-green-700 hover:border-green-600 border text-left">
+                            <button filename="{{../meta.name}}-{{format_note}}.mp4" url="{{url}}" class="getvideo w-full px-3 py-2 block my-1 w-full rounded border-green-700 hover:border-green-600 border text-left">
                                 MP4 - {{format_note}}
                             </button>
                         {{/if}}
@@ -35,5 +35,4 @@
         </div>
     </div>
 </div>
-
 {{/if}}
